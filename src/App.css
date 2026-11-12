@@ -1,0 +1,414 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #070d1d;
+  color: #e4ecfa;
+  font-family: Arial, sans-serif;
+}
+
+.dashboard {
+  max-width: 1600px;
+  margin: auto;
+  padding: 22px;
+}
+
+.topbar, .panel-heading, .section-heading,
+.metric-card > div, footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topbar h1 {
+  font-size: 21px;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.topbar p, .section-heading p {
+  color: #7788a8;
+  font-size: 11px;
+}
+
+.live-status, .simulation-badge {
+  color: #00e7a0;
+  border: 1px solid #075c4b;
+  background: #09251f;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 10px;
+}
+
+.live-dot {
+  display: inline-block;
+  background: #00e7a0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-right: 7px;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.metric-card, .panel {
+  background: #0c1529;
+  border: 1px solid #1c2b47;
+  border-radius: 10px;
+}
+
+.metric-card {
+  padding: 14px;
+  min-width: 0;
+}
+
+.metric-card span, .metric-card small {
+  color: #8292ad;
+  font-size: 10px;
+}
+
+.metric-card b {
+  color: #00dca0;
+}
+
+.metric-card > strong {
+  display: block;
+  margin: 13px 0 5px;
+  font-size: 22px;
+  overflow-wrap: anywhere;
+}
+
+.section-heading {
+  margin: 28px 0 14px;
+}
+
+.section-heading h3 {
+  font-size: 12px;
+  margin: 0;
+}
+
+.section-heading p {
+  margin-bottom: 0;
+}
+
+.hardware-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+
+.panel {
+  padding: 17px;
+  min-width: 0;
+}
+
+.panel-heading {
+  border-bottom: 1px solid #202c45;
+  padding-bottom: 13px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.panel-heading small {
+  font-size: 9px;
+  color: #7184a3;
+}
+
+.firmware {
+  color: #00e7a0 !important;
+}
+
+.led-area {
+  text-align: center;
+  padding: 35px 0 22px;
+}
+
+.led-ring {
+  width: 145px;
+  height: 145px;
+  border-radius: 50%;
+  margin: auto;
+  padding: 10px;
+  background: linear-gradient(145deg, #293b55, #101b30);
+  box-shadow: 0 0 15px #000, inset 0 0 8px #52627c;
+}
+
+.led-light {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 30%, #07512e, #00351f 60%, #001b12);
+  border: 4px solid #172e29;
+  box-shadow: inset 0 0 18px #001b10;
+}
+
+.led-ring.blink .led-light {
+  animation: ledBlink 0.45s infinite alternate;
+}
+
+@keyframes ledBlink {
+  from {
+    background: #00542c;
+    box-shadow: 0 0 10px #00ff73;
+  }
+  to {
+    background: #00f77a;
+    box-shadow: 0 0 45px #00ff73, 0 0 70px #00aa55;
+  }
+}
+
+.led-label {
+  margin-top: 18px;
+  font-size: 10px;
+  color: #8597b5;
+}
+
+.led-area p, .note {
+  font-size: 9px;
+  color: #72839e;
+}
+
+.green {
+  color: #00e7a0 !important;
+}
+
+.mini-stats, .controller-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 9px;
+}
+
+.mini-stats > div, .controller-stats > div {
+  background: #111f36;
+  padding: 12px;
+  border-radius: 6px;
+  min-width: 0;
+}
+
+.mini-stats small, .controller-stats small {
+  display: block;
+  color: #8092af;
+  font-size: 9px;
+  margin-bottom: 7px;
+}
+
+.mini-stats strong, .controller-stats strong {
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+
+.test-button {
+  margin-top: 13px;
+  width: 100%;
+  padding: 12px;
+  color: #dce8fb;
+  background: #1b304d;
+  border: 1px solid #344d6c;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.test-button:hover {
+  background: #234368;
+}
+
+.note {
+  text-align: center;
+}
+
+/* OLED DISPLAY */
+
+.oled-frame {
+  margin: 38px 0;
+  padding: 8px;
+  background: #101a2d;
+  border: 2px solid #263d58;
+  border-radius: 9px;
+}
+
+.oled-screen {
+  height: 180px;
+  padding: 12px;
+  background: #00110c;
+  border: 2px solid #123e2a;
+  border-radius: 4px;
+  color: #00ff91;
+  font-family: monospace;
+  font-size: 10px;
+  overflow: hidden;
+}
+
+.oled-top, .oled-bottom {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+}
+
+.oled-divider {
+  border-bottom: 1px solid #17663f;
+  margin: 9px 0;
+}
+
+.oled-screen h3 {
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.oled-bottom {
+  border-top: 1px solid #17663f;
+  padding-top: 8px;
+  margin-top: 10px;
+}
+
+.oled-footer {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  font-size: 10px;
+  color: #8494ae;
+}
+
+.oled-footer .selected {
+  background: #263a54;
+  padding: 6px;
+  border-radius: 4px;
+}
+
+.oled-indicator {
+  margin-left: auto;
+  color: #00e7a0;
+}
+
+/* ESP32 CONTROLLER */
+
+.board {
+  background: #050e19;
+  border: 1px solid #23374f;
+  border-radius: 7px;
+  margin: 55px 0;
+  padding: 14px;
+  font-family: monospace;
+}
+
+.board-top, .board-middle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 0;
+  border-bottom: 1px solid #172b42;
+  font-size: 9px;
+  gap: 6px;
+}
+
+.board-top strong, .board-top small {
+  display: block;
+}
+
+.board-top small {
+  color: #7b8ba4;
+  margin-top: 5px;
+}
+
+.board-middle {
+  color: #9eb0ca;
+}
+
+.board-middle span:last-child {
+  text-align: right;
+}
+
+.controller-stats {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.history {
+  margin-top: 18px;
+}
+
+.empty {
+  color: #8594ad;
+  font-size: 11px;
+  padding: 18px 0;
+}
+
+.commit-row {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 15px 5px;
+  border-bottom: 1px solid #1c2b47;
+}
+
+.commit-row div {
+  flex: 1;
+}
+
+.commit-row strong, .commit-row small {
+  display: block;
+  font-size: 11px;
+}
+
+.commit-row small, .commit-row time {
+  color: #8494ae;
+  font-size: 10px;
+  margin-top: 6px;
+}
+
+footer {
+  color: #647590;
+  font-size: 9px;
+  padding: 25px 3px;
+  gap: 10px;
+}
+
+@media (max-width: 1000px) {
+  .metrics {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hardware-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  .dashboard {
+    padding: 12px;
+  }
+
+  .metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hardware-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar {
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .topbar h1 {
+    font-size: 15px;
+  }
+
+  .section-heading {
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

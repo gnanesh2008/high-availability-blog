@@ -1,0 +1,14 @@
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  background: #070d1d;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
